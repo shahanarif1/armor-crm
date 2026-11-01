@@ -1,0 +1,12 @@
+{
+  "gate": "BLOCKED",
+  "sha": "50c0c4d",
+  "sprintId": "SPRINT-20261101-dashboard-sidebar",
+  "sast": {"status": "BLOCKED", "reason": "no approved Semgrep ruleset found"},
+  "dast": {"status": "BLOCKED", "reason": "preview URL unreachable; no CI ZAP baseline"},
+  "confirmedSeverityCounts": {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0},
+  "confirmedFindings": [],
+  "reasoning": "SAST and DAST could not run; no confirmed vulnerabilities; zero CRITICAL/HIGH. Unverified alerts never block and are never reported as confirmed.",
+  "followUps": ["obtain an approved Semgrep ruleset and rerun SAST on 50c0c4d", "run ZAP baseline DAST against an authorized preview of 50c0c4d"],
+  "releaseImplication": "No CRITICAL/HIGH to waive; security coverage gaps logged as follow-ups, not confirmed findings"
+}
