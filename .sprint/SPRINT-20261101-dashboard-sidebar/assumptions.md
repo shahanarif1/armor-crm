@@ -1,0 +1,10 @@
+# Assumption Ledger — SPRINT-20261101-dashboard-sidebar
+
+| ID | Question that was unclear | Decision taken | Basis | Reversible? | Affects |
+|----|---------------------------|----------------|-------|-------------|---------|
+| A-001 | Is the sidebar already implemented, or do we write it? | Adopt origin's pushed sidebar (branch `sprint/SPRINT-20261101-dashboard-sidebar` @ `50c0c4d`, commit `e520801`); do NOT reimplement | DEFAULTS.md §precedence — the repo/remote wins; never reimplement pushed work (AGENTS.md) | Yes | All tasks (no implement task) |
+| A-002 | Candidate SHA | `50c0c4d` (tip of origin's sidebar branch; already contains sidebar + auth + services) | Origin survey; shared state is the git remote | Yes | QA/security/release target |
+| A-003 | Stack / build commands | Next.js 15 App Router, TypeScript, npm (`dev`/`build`/`start`/`lint`); static export (`output: "export"`). No `test` script → NOT_RUN | package.json + netlify.toml + next.config.ts | No | Build / QA |
+| A-004 | How does the sidebar reach production? | Merge sidebar branch into `main`, then deploy; devops_engineer owns release, PM does not merge/push app code | TOOLS.md boundary (PM read-only on repo); devops_engineer owns production release | Yes | TASK-005 |
+| A-005 | Security coverage if SAST/DAST runners unavailable | Record SAST `BLOCKED` / DAST `NOT_RUN` as follow-ups, not confirmed findings; never block on unverified alerts; zero confirmed CRITICAL/HIGH required to release | Prior sprint pattern; AGENTS.md severity rubric | Yes | TASK-004 / adjudication |
+| A-006 | Auth persistence for logout | Cookie-based session (`armor_session`) via middleware guard, static-export compatible; demo-grade, not production security | Existing `middleware.ts` + `src/app/lib/auth.ts` on origin | Yes | Logout behavior |
