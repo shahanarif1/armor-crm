@@ -1,0 +1,32 @@
+{
+  "gate": "PASS",
+  "sha": "50c0c4d",
+  "sprintId": "SPRINT-20261101-dashboard-sidebar",
+  "perAcResults": [
+    {
+      "ac": "AC-1",
+      "result": "PASS",
+      "evidence": "npm run build exits 0; static out/ emitted; out/dashboard.html exists (5555 bytes); build output confirms /dashboard route generated"
+    },
+    {
+      "ac": "AC-2",
+      "result": "PASS",
+      "evidence": "src/app/dashboard/page.tsx contains sidebar: <a href=\"/\">Home page</a> and <button onClick={handleLogout}>logout</button>; handleLogout clears session via clearSession() and redirects to /login; middleware guards /dashboard/:path* with armor_session cookie check; built client-side JS contains \"Home page\" and \"logout\" text"
+    },
+    {
+      "ac": "AC-3",
+      "result": "PASS",
+      "evidence": "Static export generates out/dashboard.html; netlify.toml publish=\"out\"; next.config.ts output=\"export\"
+    }
+  ],
+  "evidence": {
+    "buildExitCode": 0,
+    "staticExport": "out/ emitted including /dashboard.html",
+    "sidebarMarkup": "Home page link + logout button present in page.tsx",
+    "middlewareGuard": "/dashboard/:path* requires armor_session cookie"
+  },
+  "defectLog": [],
+  "confirmationCounts": {"acPassed": 3, "acFailed": 0, "defects": 0},
+  "recommendation": "proceed to security",
+  "qaEngineer": "independent verification at candidate SHA 50c0c4d"
+}
